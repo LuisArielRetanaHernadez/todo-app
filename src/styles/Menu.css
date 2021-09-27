@@ -1,6 +1,7 @@
 .menu{
-    @apply tw-w-full tw-bg-red tw-flex;
+    @apply tw-w-full tw-flex;
     height: 8%;
+    background: linear-gradient(to right, rgb(15, 32, 39), rgb(32, 58, 67), rgb(44, 83, 100));
 }
 .nav-menu{
     @apply tw-w-2/12;
