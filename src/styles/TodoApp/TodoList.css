@@ -10,7 +10,7 @@
     width: 8px;
 }
 .list-task::-webkit-scrollbar-thumb{
-    @apply tw-bg-red;
+    @apply tw-bg-blue;
 }
 .list-task::-webkit-scrollbar-track{
     @apply tw-bg-white;

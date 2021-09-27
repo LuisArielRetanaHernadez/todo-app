@@ -58,9 +58,10 @@ const TodoApp = () => {
     const [data, setData] = useState(task)
     const [dataTask, setDataTask] = useState(task)
     const [filterTask, setFilterTask] = useState('all')
-    const [idInit, setIdInit] = useState(task[task.length - 1].id)
+    const [idInit, setIdInit] = useState(7)
 
     // FILTER Y RENDE DE TASK
+
     useEffect(() => {
         
         if(filterTask !== 'all' && task){
@@ -113,10 +114,6 @@ const TodoApp = () => {
         setIdInit(idGenerator)
         return idGenerator
     }
-    console.log(idInit)
-    console.log(data)
-
-
 
     return (
     <div className='tw-w-screen tw-h-screen container-general-todo-app'>
