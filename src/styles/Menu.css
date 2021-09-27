@@ -1,0 +1,14 @@
+.menu{
+    @apply tw-w-full tw-bg-red tw-flex;
+    height: 8%;
+}
+.nav-menu{
+    @apply tw-w-2/12;
+}
+.list-menu{
+    @apply tw-h-full tw-flex tw-flex-row tw-justify-evenly tw-items-center;
+}
+.item-menu{
+    @apply tw-h-3/6 tw-items-center tw-rounded;
+    padding: 5px, 10px;
+}

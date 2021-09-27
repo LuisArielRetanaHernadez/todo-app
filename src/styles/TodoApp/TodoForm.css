@@ -1,0 +1,17 @@
+.todo-form{
+    @apply tw-w-8/12 tw-h-full tw-box-border;
+}
+.form-todo{
+    @apply tw-w-full tw-h-full tw-box-border;
+}
+.component-todo-form{
+    @apply tw-h-full tw-box-border tw-flex tw-items-center;
+}
+.component-todo-form input[type='text']{
+    @apply tw-h-full tw-outline-none tw-p-1.5;
+    width: 90%;
+}
+.component-todo-form button{
+    @apply tw-h-full tw-bg-red tw-border-0;
+    width: 20%;
+}

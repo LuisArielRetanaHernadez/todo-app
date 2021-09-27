@@ -1,0 +1,17 @@
+.todo-list{
+    @apply tw-w-full tw-h-full tw-box-border;
+    @apply tw-flex tw-justify-center;
+}
+.list-task{
+    @apply tw-w-full;
+    @apply tw-flex tw-flex-col tw-items-center tw-overflow-auto
+}
+.list-task::-webkit-scrollbar{
+    width: 8px;
+}
+.list-task::-webkit-scrollbar-thumb{
+    @apply tw-bg-red;
+}
+.list-task::-webkit-scrollbar-track{
+    @apply tw-bg-white;
+}

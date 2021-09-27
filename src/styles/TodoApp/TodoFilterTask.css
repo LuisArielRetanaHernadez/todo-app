@@ -1,0 +1,6 @@
+.todo-filter-task{
+    @apply tw-w-3/12 tw-flex tw-items-center;
+}
+.todo-filter-task select{
+    @apply tw-w-full tw-h-full tw-outline-none
+}

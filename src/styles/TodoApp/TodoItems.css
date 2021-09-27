@@ -1,0 +1,20 @@
+.todo-items-status-false{
+    @apply tw-w-11/12 tw-bg-white;
+    @apply tw-p-1.5 tw-m-1;
+}
+.todo-items-status-true{
+    @apply tw-w-10/12 tw-bg-white tw-opacity-50;
+    @apply tw-p-1.5 tw-m-1;
+}
+.item-description{
+    @apply tw-flex tw-justify-between;
+}
+.item-task-true{
+    @apply tw-line-through tw-w-11/12
+}
+.item-task-false{
+    @apply tw-no-underline tw-w-full
+}
+.item-btn-delet-task{
+    @apply tw-w-1/12
+}

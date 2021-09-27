@@ -1,23 +1,20 @@
-import logo from './logo.svg';
-import './App.css';
+
+// ROUTER-DOM
+import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
+
+// VISTAS
+import TodoApp from './views/TodoApp';
+import TodoPaperBin from './views/TodoPaperBin';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="">
+      <Router>
+        <Switch>
+          <Route component={TodoApp} exact path='/' />
+          <Route component={TodoPaperBin} exact path='/Papelera' />
+        </Switch>
+      </Router>
     </div>
   );
 }
