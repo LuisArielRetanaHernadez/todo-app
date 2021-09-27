@@ -15,7 +15,7 @@ import { useEffect } from 'react';
 const task = [
     {
         id: 1,
-        task: "Ir a jugar futbol",
+        task: "ir a jugar futbol",
         status: true
     },
     {
@@ -71,7 +71,6 @@ const TodoApp = () => {
         }else{
             setDataTask(data)
         }
-        console.log(filterTask)
         return () => {
             setDataTask(data)
         }
@@ -109,11 +108,21 @@ const TodoApp = () => {
             alert('no dejes el formulario vacio')
         }
     }
+
     const generatorId = (id) => {
         const idGenerator = id + 1
         setIdInit(idGenerator)
         return idGenerator
     }
+
+    const restoreTask = (id) => {
+        const taskReestablished = paperbinTask.filter(task => task.id === id)
+        setDataTask([...data, taskReestablished])
+        setData([...data, taskReestablished])
+
+    }
+
+    console.log(data)
 
     return (
     <div className='tw-w-screen tw-h-screen container-general-todo-app'>
