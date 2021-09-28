@@ -115,15 +115,6 @@ const TodoApp = () => {
         return idGenerator
     }
 
-    const restoreTask = (id) => {
-        const taskReestablished = paperbinTask.filter(task => task.id === id)
-        setDataTask([...data, taskReestablished])
-        setData([...data, taskReestablished])
-
-    }
-
-    console.log(data)
-
     return (
     <div className='tw-w-screen tw-h-screen container-general-todo-app'>
         <Menu />
