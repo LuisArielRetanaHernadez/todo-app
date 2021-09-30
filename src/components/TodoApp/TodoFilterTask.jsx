@@ -10,6 +10,7 @@ const TodoFilterTask = ({filterTask, setFilterTask}) => {
                     <option value='all'>Todos</option>
                     <option value='true'>Completos</option>
                     <option value='false'>sin completar</option>
+                    <option value='paperBin'>Papelera</option>
             </select>
         </div>
     )

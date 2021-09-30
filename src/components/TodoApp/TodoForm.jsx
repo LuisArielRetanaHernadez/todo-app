@@ -6,7 +6,8 @@ import { useState } from 'react';
 const formInit = {
     id: 0,
     task: '',
-    status: false
+    status: false,
+    statusDelet: false
 }
 
 const TodoForm = ({addNewTask}) =>{

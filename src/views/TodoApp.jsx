@@ -16,37 +16,44 @@ const task = [
     {
         id: 1,
         task: "ir a jugar futbol",
-        status: true
+        status: true,
+        statusDelet: false
     },
     {
         id: 2,
         task: "ir a jugar al xbox",
-        status: false
+        status: false,
+        statusDelet: false
     },
     {
         id: 3,
         task: "acabar el proyecto del todo app",
-        status: false
+        status: false,
+        statusDelet: false
     },
     {
         id: 4,
         task: "ir a comer con mi mama",
-        status: false
+        status: false,
+        statusDelet: false
     },
     {
         id: 5,
         task: "jugar todos los dia con la mabi",
-        status: false
+        status: false,
+        statusDelet: false
     },
     {
         id: 6,
         task: "ir a comprar la RTX 3090",
-        status: false
+        status: false,
+        statusDelet: false
     },
     {
         id: 7,
         task: "acabar el proyecto de react js",
-        status: false
+        status: false,
+        statusDelet: false
     }
 ]
 
@@ -56,6 +63,7 @@ const TodoApp = () => {
     // ESTADOS
     const [data, setData] = useState(task)
     const [dataTask, setDataTask] = useState(task)
+    const [paperBin, setPaperBin] = useState([])
     const [filterTask, setFilterTask] = useState('all')
     const [idInit, setIdInit] = useState(7)
 
@@ -63,17 +71,20 @@ const TodoApp = () => {
 
     useEffect(() => {
         
-        if(filterTask !== 'all' && task){
-
-            const TaskRende = data.filter(task => task.status === JSON.parse(filterTask))
-            setDataTask(TaskRende)
+        if(filterTask !== 'all' && data){
+            if(filterTask !== 'paperBin'){
+                const TaskRende = data.filter(task => task.status === JSON.parse(filterTask))
+                setDataTask(TaskRende)
+            }else{
+                setDataTask(paperBin)
+            }
         }else{
             setDataTask(data)
         }
         return () => {
             setDataTask(data)
         }
-    },[filterTask, data])
+    },[filterTask, data, paperBin])
 
     const updateStatusTask = id => {
         data.forEach(task => {
@@ -86,10 +97,21 @@ const TodoApp = () => {
         setData(newUpdateTask)
     }
 
-    const deletTask = id => {
-        const newDeletTask = data.filter(task => task.id !== id)
-        setDataTask(newDeletTask)
-        setData(newDeletTask)
+    const deletTask = (id, statusDelet) => {
+        if(!statusDelet){
+            const newDeletTask = data.filter(task => task.id !== id)
+            data.forEach(task => {
+                if(task.id === id){
+                    task.statusDelet = true
+                }
+            })
+            const newTaskPaperBin = data.filter(task => task.id === id)
+            setPaperBin([...paperBin, ...newTaskPaperBin])
+            setData(newDeletTask)
+        }else{
+            const taskPaperBin =  paperBin.filter(taskDelet => taskDelet.id !== id)
+            setPaperBin([...taskPaperBin])
+        }
     }
 
     const addNewTask = (newTask) => {
@@ -98,8 +120,7 @@ const TodoApp = () => {
             if (!redundancy){
                 const newId = generatorId(idInit)
                 newTask.id = newId
-                setDataTask([...data,newTask])
-                setData([...data,newTask])
+                setData([newTask, ...data])
             }else{
                 alert('ya tienes una tarea con ese nombre')
             }
@@ -114,6 +135,19 @@ const TodoApp = () => {
         return idGenerator
     }
 
+    const restoreTask = id => {
+        paperBin.forEach(task => {
+            if(task.id === id){
+                task.statusDelet = false
+                task.status = false
+            }
+        })
+        const taskReestablished = paperBin.filter(task => task.id === id)
+        const newPaperBin = paperBin.filter(task => task.id !== id)
+        setPaperBin(newPaperBin)
+        setData([...data, ...taskReestablished])
+    }
+
     return (
     <div className='tw-w-screen tw-h-screen container-general-todo-app'>
         <Menu />
@@ -124,7 +158,7 @@ const TodoApp = () => {
                     <TodoFilterTask filterTask={filterTask} setFilterTask={setFilterTask} />
                 </div>
                 <div className='container-todo-list'>
-                    <TodoList dataTask={dataTask} updateStatusTask={updateStatusTask} deletTask={deletTask} />
+                    <TodoList dataTask={dataTask} updateStatusTask={updateStatusTask} deletTask={deletTask} restoreTask={restoreTask} />
                 </div>
             </div>
        </div>
