@@ -145,7 +145,7 @@ const TodoApp = () => {
         const taskReestablished = paperBin.filter(task => task.id === id)
         const newPaperBin = paperBin.filter(task => task.id !== id)
         setPaperBin(newPaperBin)
-        setData([...data, ...taskReestablished])
+        setData([...taskReestablished, ...data])
     }
 
     return (
